@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+  margin: 0 auto;
+  width: 40%;
+}
+
+h1 {
+  color: rgb(106, 12, 174);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blue;
+}
