@@ -1,18 +1,22 @@
-//Elementi
-const dodaj = document.getElementById("dodajB");
-const unos = document.getElementById("unosB");
-const lista = document.getElementById("listaB");
+// Elementi
+const buttonAdd = document.getElementById("taskAdd");
+const inputTask = document.getElementById("inputTask");
+const listTask = document.getElementById("listTask");
 
-//Funckije
+// Funkcije
+function TaskAdd() {
+  const task1 = inputTask.value.trim();
 
-const dodajBiljesku () {
-    const biljeska = unos.ariaValueMax.trim()
+  if (task1) {
+    createElementTask(task1);
+    inputTask.value = "";
+  } else {
+    alert("Unesi!!");
+  }
+}
 
-    if (biljeska) {
-        create
-    }
-} 
+buttonAdd.addEventListener("click", TaskAdd);
 
-function (biljeska) {
-    
-} 
+function createElementTask(task1) {
+  const itemList = document.createElement("li");
+}
