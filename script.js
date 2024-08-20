@@ -1,12 +1,13 @@
-// Elementi
 const buttonAdd = document.getElementById("taskAdd");
 const inputTask = document.getElementById("inputTask");
 const listTask = document.getElementById("listTask");
 
-taskLoad();
+const taskLoad = function () {
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks.forEach(createElementTask);
+};
 
-// Funkcije
-function TaskAdd() {
+const TaskAdd = function () {
   const task1 = inputTask.value.trim();
 
   if (task1) {
@@ -15,42 +16,74 @@ function TaskAdd() {
   } else {
     alert("Unesi!!");
   }
-}
+};
 
-buttonAdd.addEventListener("click", TaskAdd);
-
-function createElementTask(task1) {
+const createElementTask = function (task1) {
   const itemList = document.createElement("li");
+  const taskText = document.createElement("span");
+  taskText.textContent = task1;
 
-  itemList.textContent = task1;
+  itemList.appendChild(taskText);
 
+  //Podesavanje button-a u javi
+  const buttonContainer = document.createElement("div");
+  buttonContainer.className = "task-buttons";
+
+  const buttonDelete = createButtonDelete(itemList);
+  const buttonEdit = createButtonEdit(taskText);
+
+  buttonContainer.appendChild(buttonDelete);
+  buttonContainer.appendChild(buttonEdit);
+
+  itemList.appendChild(buttonContainer);
   listTask.appendChild(itemList);
 
+  taskSave();
+};
+
+const createButtonDelete = function (itemList) {
   const buttonDelete = document.createElement("button");
+
   buttonDelete.textContent = "Delete";
   buttonDelete.className = "deleteTask";
 
-  itemList.appendChild(buttonDelete);
-  listTask.appendChild(itemList);
-
   buttonDelete.addEventListener("click", function () {
     listTask.removeChild(itemList);
+    taskSave();
   });
 
-  taskSave();
-}
+  return buttonDelete;
+};
 
-function taskSave() {
-  let task = [];
+const createButtonEdit = function (taskText) {
+  const buttonEdit = document.createElement("button");
+
+  buttonEdit.textContent = "Edit";
+
+  buttonEdit.className = "editTask";
+
+  buttonEdit.addEventListener("click", function () {
+    const newTask = prompt("Ažuriraj svoju bilješku:", taskText.textContent);
+
+    if (newTask) {
+      taskText.textContent = newTask.trim();
+      taskSave();
+    }
+  });
+
+  return buttonEdit;
+};
+
+const taskSave = function () {
+  let tasks = [];
   listTask.querySelectorAll("li").forEach(function (item) {
-    task.push(item.textContent.replace("Delete", "").trim());
+    const taskText = item.querySelector("span").textContent.trim();
+    tasks.push(taskText);
   });
 
-  localStorage.setItem("task", JSON.stringify(task));
-}
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
 
-function taskLoad() {
-  const task = JSON.parse(localStorage.getItem("task")) || [];
+buttonAdd.addEventListener("click", TaskAdd);
 
-  task.forEach(createElementTask);
-}
+taskLoad();

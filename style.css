@@ -1,11 +1,18 @@
 body {
   font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url("images/todo.jpeg");
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
-  text-align: center;
-  margin: 0 auto;
-  width: 40%;
+  border: none;
+  background: none;
 }
 
 h1 {
@@ -22,5 +29,54 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(165, 160, 160);
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  margin-left: 10px auto;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(209, 209, 209);
+  color: rgb(153, 90, 90);
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: rgb(62, 62, 138);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid rgb(238, 238, 238);
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: rgb(73, 84, 39);
+  box-shadow: 0 0 5px rgba(106, 12, 174, 0.5);
+}
+
+.task-buttons {
+  display: flex;
+  margin-left: auto;
+}
+
+#taskAdd {
+  transition: transform 0.3s ease, font-weight 0.3s ease;
+}
+
+#taskAdd:hover,
+.deleteTask:hover,
+.editTask:hover {
+  transform: scale(1.1);
+  font-weight: bold;
 }
