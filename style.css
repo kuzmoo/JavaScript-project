@@ -12,32 +12,33 @@ body {
 
 .container {
   border: none;
-  background: none;
+  background: rgba(255, 255, 255, 0.1);
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 h1 {
   color: rgb(106, 12, 174);
+  margin-bottom: 10px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  margin: 5px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(255, 255, 255);
+input[type="text"] {
+  width: 100%;
   padding: 10px;
+  border: 2px solid rgb(238, 238, 238);
   border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 button {
-  display: block;
-  margin-left: 10px auto;
-  padding: 10px 12px;
+  margin-top: 10px;
+  padding: 8px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -50,33 +51,35 @@ button:hover {
   background-color: rgb(62, 62, 138);
 }
 
-input[type="text"] {
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
   width: 100%;
-  padding: 10px;
-  border: 2px solid rgb(238, 238, 238);
-  border-radius: 5px;
-  font-size: 16px;
-  transition: border-color 0.3s;
-}
-
-input[type="text"]:focus {
-  outline: none;
-  border-color: rgb(73, 84, 39);
-  box-shadow: 0 0 5px rgba(106, 12, 174, 0.5);
-}
-
-.task-buttons {
-  display: flex;
-  margin-left: auto;
 }
 
 #taskAdd {
   transition: transform 0.3s ease, font-weight 0.3s ease;
 }
 
-#taskAdd:hover,
-.deleteTask:hover,
-.editTask:hover {
+#taskAdd:hover {
   transform: scale(1.1);
   font-weight: bold;
+}
+li {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.44);
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 50px;
+}
+
+.task-buttons {
+  display: flex;
+  gap: 10px;
 }

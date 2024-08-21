@@ -20,12 +20,12 @@ const TaskAdd = function () {
 
 const createElementTask = function (task1) {
   const itemList = document.createElement("li");
+
   const taskText = document.createElement("span");
   taskText.textContent = task1;
 
   itemList.appendChild(taskText);
 
-  //Podesavanje button-a u javi
   const buttonContainer = document.createElement("div");
   buttonContainer.className = "task-buttons";
 
@@ -37,6 +37,11 @@ const createElementTask = function (task1) {
 
   itemList.appendChild(buttonContainer);
   listTask.appendChild(itemList);
+
+  //većanje providnosti na 100%
+  setTimeout(() => {
+    itemList.style.opacity = 1;
+  }, 100);
 
   taskSave();
 };
